@@ -71,9 +71,7 @@ function between(x, min, max) {
 }
 
 function button_peek(){
-		if (window.confirm("Are you sure you want to peek?")) {
-				draw(randpos);
-		}
+		draw(randpos);
 		gtag('event', 'peek');
 }
 
