@@ -71,10 +71,14 @@ function between(x, min, max) {
 }
 
 function button_peek(){
-		if (window.confirm("Are you sure you want to peek?")) {
-				draw(randpos);
-		}
+		draw(randpos);
 		gtag('event', 'peek');
+}
+
+function reset_guess() {
+	document.getElementById("guesser").value = 500;
+	document.getElementById("guessdisp").value = 50;
+	gtag('event', 'reset_guess');
 }
 
 
@@ -98,6 +102,7 @@ function new_clue(){
 		if (seed.split('(')[1]) { clue_num = seed.split('(')[1].split(')')[0] }
 		clue_num++;
 		$("#seed").val(seed.split('(')[0].concat('(').concat(clue_num).concat(')'));
+		reset_guess();
 		fire();
 		gtag('event', 'new_clue');
 }
@@ -116,5 +121,6 @@ function update_percentages(){
 
 function button_clear(){
 		clearboard();
+		reset_guess();
 		gtag('event', 'clear_board');
 }
